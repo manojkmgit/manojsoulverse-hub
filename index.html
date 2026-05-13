@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManojSoulVerse | Poet & Lyricist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Exact same CSS as before */
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #4a2538 0%, #763b58 50%, #a46073 100%); background-attachment: fixed; color: #fdf5e6; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; padding-bottom: 40px; background: rgba(30, 15, 25, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); min-height: 100vh; box-shadow: 0 0 30px rgba(0,0,0,0.2); }
+        .banner { background: linear-gradient(135deg, #c05c7e, #e38e70); height: 160px; width: 100%; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .profile-wrapper { text-align: center; margin-top: -60px; }
+        .profile-pic { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #4a2538; object-fit: cover; background-color: #fdf5e6; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .profile-info { text-align: center; padding: 10px 20px; }
+        .profile-name { font-size: 32px; font-weight: bold; margin: 10px 0 5px 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        .profile-bio { font-size: 16px; color: #f0d8ca; margin-bottom: 8px; line-height: 1.4; }
+        .profile-link { font-size: 14px; color: #ffb88c; text-decoration: none; font-weight: bold; }
+        .social-links { display: flex; justify-content: center; gap: 25px; margin: 20px 0 30px 0; }
+        .social-icon { font-size: 32px; text-decoration: none; transition: transform 0.2s; }
+        .social-icon:hover { transform: scale(1.1); }
+        .fa-instagram { color: #C13584; }
+        .fa-facebook-f { color: #1877F2; }
+        .fa-tiktok { color: #ffffff; filter: drop-shadow(-2px 0 #EE1D52) drop-shadow(2px 0 #69C9D0); }
+        .search-container { margin: 0 20px 25px 20px; position: relative; }
+        #searchInput { width: 100%; box-sizing: border-box; padding: 15px 20px 15px 45px; font-size: 16px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 25px; background: rgba(255, 255, 255, 0.08); color: #ffffff; outline: none; transition: 0.3s; }
+        #searchInput:focus { border-color: #ffb88c; background: rgba(255, 255, 255, 0.15); }
+        .search-icon { position: absolute; top: 50%; left: 18px; transform: translateY(-50%); color: #f0d8ca; opacity: 0.7; }
+        .section { background: rgba(255, 255, 255, 0.08); margin: 0 20px 25px 20px; border-radius: 12px; padding: 25px 20px; border: 1px solid rgba(255, 255, 255, 0.15); }
+        .all-songs-section { background: rgba(20, 60, 60, 0.4); border-color: rgba(32, 178, 170, 0.3); }
+        .section-header { font-size: 24px; font-weight: bold; margin-top: 0; border-bottom: 2px solid rgba(255, 255, 255, 0.2); padding-bottom: 15px; margin-bottom: 25px; text-align: center; }
+        .song-item { margin-bottom: 35px; background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 12px; }
+        .song-item:last-child { margin-bottom: 0; }
+        .song-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+        .album-col { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .album-art { width: 100%; max-width: 160px; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); border: 2px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px; }
+        .song-title { font-size: 18px; font-weight: bold; text-align: center; margin: 0; line-height: 1.3; }
+        .app-list-vertical { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .app-btn-row { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; background: rgba(255, 255, 255, 0.1); color: #ffffff; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: bold; transition: 0.2s; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .app-btn-row i { font-size: 24px; width: 35px; text-align: left; }
+        .app-btn-row:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(5px); border-color: rgba(255, 255, 255, 0.2); }
+        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .app-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.1); color: #ffffff; text-decoration: none; padding: 15px 5px; border-radius: 8px; font-size: 12px; font-weight: bold; transition: 0.2s; }
+        .app-btn i { font-size: 30px; margin-bottom: 8px; }
+        .app-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
+        .spotify i { color: #1DB954; }
+        .apple i { color: #FA243C; }
+        .youtube i { color: #FF0000; }
+        .amazon i { color: #00A8E1; }
+        @media (max-width: 450px) { .app-grid { grid-template-columns: repeat(2, 1fr); } .song-layout { grid-template-columns: 1fr; } .album-art { max-width: 200px; } }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="app-container">
+        </div>
+
+    <script>
+        // Fetch the data from data.json
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                buildPage(data);
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+                document.getElementById('app-container').innerHTML = '<p style="text-align:center; padding: 20px;">Error loading data. Are you running this on a web server?</p>';
+            });
+
+        function buildPage(data) {
+            const container = document.getElementById('app-container');
+            
+            // 1. Build Top Header & Profile
+            let html = `
+                <div class="banner"></div>
+                <div class="profile-wrapper">
+                    <img src="${data.profile.photo}" alt="${data.profile.name}" class="profile-pic">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">${data.profile.name}</div>
+                    <div class="profile-bio">${data.profile.bio}</div>
+                    <a href="${data.profile.socials.instagram}" target="_blank" class="profile-link">@${data.profile.name.toLowerCase()}</a>
+                </div>
+                <div class="social-links">
+                    <a href="${data.profile.socials.instagram}" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="${data.profile.socials.facebook}" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="${data.profile.socials.tiktok}" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" onkeyup="filterSongs()" placeholder="Search Ghazals...">
+                </div>
+            `;
+
+            // 2. Build the "Upcoming" / Custom Sections dynamically
+            data.sections.forEach((section, index) => {
+                // We will insert the "Listen All" block after the first section (index 0)
+                
+                html += `
+                <div class="section">
+                    <div class="section-header">${section.header}</div>
+                `;
+
+                section.songs.forEach(song => {
+                    html += `
+                    <div class="song-item">
+                        <div class="song-layout">
+                            <div class="album-col">
+                                <img src="${song.albumArt}" alt="${song.title}" class="album-art">
+                                <div class="song-title">${song.title}</div>
+                            </div>
+                            <div class="app-list-vertical">
+                                <a href="${song.links.spotify}" target="_blank" class="app-btn-row spotify"><i class="fa-brands fa-spotify"></i>Spotify</a>
+                                <a href="${song.links.apple}" target="_blank" class="app-btn-row apple"><i class="fa-brands fa-apple"></i>Apple</a>
+                                <a href="${song.links.youtube}" target="_blank" class="app-btn-row youtube"><i class="fa-brands fa-youtube"></i>YouTube</a>
+                                <a href="${song.links.amazon}" target="_blank" class="app-btn-row amazon"><i class="fa-brands fa-amazon"></i>Amazon</a>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+                
+                html += `</div>`; // Close Section
+
+                // Insert "Listen All Songs" right after the first section
+                if (index === 0) {
+                    html += `
+                    <div class="section all-songs-section">
+                        <div class="section-header">Listen All Songs</div>
+                        <div class="app-grid">
+                            <a href="${data.listenAll.spotify}" target="_blank" class="app-btn spotify"><i class="fa-brands fa-spotify"></i>Spotify</a>
+                            <a href="${data.listenAll.apple}" target="_blank" class="app-btn apple"><i class="fa-brands fa-apple"></i>Apple</a>
+                            <a href="${data.listenAll.youtube}" target="_blank" class="app-btn youtube"><i class="fa-brands fa-youtube"></i>YouTube</a>
+                            <a href="${data.listenAll.amazon}" target="_blank" class="app-btn amazon"><i class="fa-brands fa-amazon"></i>Amazon</a>
+                        </div>
+                    </div>
+                    `;
+                }
+            });
+
+            // Apply all generated HTML to the container
+            container.innerHTML = html;
+        }
+
+        // Search Filter Function
+        function filterSongs() {
+            let input = document.getElementById('searchInput');
+            let filter = input.value.toLowerCase();
+            let sections = document.querySelectorAll('.section');
+
+            sections.forEach(function(section) {
+                if (section.classList.contains('all-songs-section')) return;
+
+                let songs = section.querySelectorAll('.song-item');
+                let hasVisibleSong = false;
+
+                songs.forEach(function(song) {
+                    let title = song.querySelector('.song-title').textContent.toLowerCase();
+                    if (title.includes(filter)) {
+                        song.style.display = "";
+                        hasVisibleSong = true;
+                    } else {
+                        song.style.display = "none";
+                    }
+                });
+
+                section.style.display = (hasVisibleSong || filter === "") ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>

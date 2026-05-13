@@ -1,0 +1,60 @@
+{
+  "profile": {
+    "name": "ManojSoulVerse",
+    "photo": "YOUR_PROFILE_PHOTO.jpg",
+    "bio": "✍️ Poet & Lyricist | Crafting soulful songs about love & life 🎶✨",
+    "socials": {
+      "instagram": "https://www.instagram.com/manojsoulverse/",
+      "facebook": "#",
+      "tiktok": "#"
+    }
+  },
+  "listenAll": {
+    "spotify": "YOUR_SPOTIFY_ARTIST_URL",
+    "apple": "YOUR_APPLE_ARTIST_URL",
+    "youtube": "YOUR_YT_MUSIC_ARTIST_URL",
+    "amazon": "YOUR_AMAZON_ARTIST_URL"
+  },
+  "sections": [
+    {
+      "header": "Releasing on May 22",
+      "songs": [
+        {
+          "title": "Kaaton Ki Tamanna",
+          "albumArt": "YOUR_ALBUM_ART_URL_1.jpg",
+          "links": {
+            "spotify": "#",
+            "apple": "#",
+            "youtube": "#",
+            "amazon": "#"
+          }
+        }
+      ]
+    },
+    {
+      "header": "Streaming Now",
+      "songs": [
+        {
+          "title": "Wahi Kissa",
+          "albumArt": "YOUR_ALBUM_ART_URL_2.jpg",
+          "links": {
+            "spotify": "#",
+            "apple": "#",
+            "youtube": "#",
+            "amazon": "#"
+          }
+        },
+        {
+          "title": "Future Song Title",
+          "albumArt": "YOUR_ALBUM_ART_URL_3.jpg",
+          "links": {
+            "spotify": "#",
+            "apple": "#",
+            "youtube": "#",
+            "amazon": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
