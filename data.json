@@ -10,10 +10,10 @@
     }
   },
   "listenAll": {
-    "spotify": "YOUR_SPOTIFY_ARTIST_URL",
-    "apple": "YOUR_APPLE_ARTIST_URL",
-    "youtube": "YOUR_YT_MUSIC_ARTIST_URL",
-    "amazon": "YOUR_AMAZON_ARTIST_URL"
+    "spotify": "https://artists.spotify.com/c/artist/3CdTMi7Yk5FfZphdFkK5cP/home",
+    "apple": "https://artists.spotify.com/c/artist/3CdTMi7Yk5FfZphdFkK5cP/home",
+    "youtube": "https://music.youtube.com/channel/UC5QGCoDVCM_-nq6WvM-iEfw",
+    "amazon": "https://artists.amazon.com/reports/overview"
   },
   "sections": [
     {
