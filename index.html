@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ManojSoulVerse | Poet & Lyricist</title>
@@ -187,24 +190,30 @@
     <div class="container" id="app-container">
         </div>
 
-    <script>
-        fetch('data.json')
+<script>
+        // Generate a unique timestamp string
+        const version = new Date().getTime();
+
+        // 1. Force a fresh fetch of data.json by appending the timestamp
+        fetch(`data.json?v=${version}`)
             .then(response => response.json())
             .then(data => {
-                buildPage(data);
+                buildPage(data, version);
             })
             .catch(error => {
                 console.error('Error loading data:', error);
                 document.getElementById('app-container').innerHTML = '<p style="text-align:center; padding: 20px;">Error loading data.</p>';
             });
 
-        function buildPage(data) {
+        // Pass the version variable into the buildPage function
+        function buildPage(data, version) {
             const container = document.getElementById('app-container');
             
+            // 2. Append the timestamp to the profile photo URL
             let html = `
                 <div class="banner"></div>
                 <div class="profile-wrapper">
-                    <img src="${data.profile.photo}" alt="${data.profile.name}" class="profile-pic">
+                    <img src="${data.profile.photo}?v=${version}" alt="${data.profile.name}" class="profile-pic">
                 </div>
                 <div class="profile-info">
                     <div class="profile-name">${data.profile.name}</div>
@@ -229,11 +238,12 @@
                 `;
 
                 section.songs.forEach(song => {
+                    // 3. Append the timestamp to the album art URL
                     html += `
                     <div class="song-item">
                         <div class="song-layout">
                             <div class="album-col">
-                                <img src="${song.albumArt}" alt="${song.title}" class="album-art">
+                                <img src="${song.albumArt}?v=${version}" alt="${song.title}" class="album-art">
                                 <div class="song-title">${song.title}</div>
                             </div>
                             <div class="app-list-horizontal">
