@@ -152,9 +152,49 @@ A deployment is complete only when its status is `built` and its commit matches 
 https://yaayavar.com/songs.json?version=TIMESTAMP
 ```
 
-## Custom-domain DNS
+## Connect `yaayavar.com` to GitHub Pages
 
-The active DNS configuration for the apex domain uses GitHub Pages' four IPv4 addresses:
+The domain is registered with GoDaddy, while the website is hosted directly by GitHub Pages. `yaayavar.com` must not use GoDaddy forwarding because it is the primary domain.
+
+### 1. Configure the GitHub Pages publishing source
+
+1. Open the [GitHub repository](https://github.com/manojkmgit/manojsoulverse-hub).
+2. Select **Settings → Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**.
+4. Select branch **main** and directory **/(root)**, then save.
+5. Confirm that the site builds successfully at its default GitHub Pages address.
+
+### 2. Verify ownership of the domain on GitHub
+
+Domain verification protects the domain from being used by another GitHub account.
+
+1. Open personal GitHub **Settings** from the profile menu. This is the account settings page, not the repository settings page.
+2. Select **Pages → Add a domain**.
+3. Enter `yaayavar.com`.
+4. GitHub displays a TXT record. Add it in GoDaddy DNS.
+5. Wait for DNS propagation, return to the same GitHub page, and select **Verify**.
+6. Keep the verification TXT record permanently.
+
+The current verification record is:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| TXT | `_github-pages-challenge-manojkmgit` | `4bed6df5439ff8dbc294a0eaa14ce8` |
+
+If GitHub generates a different value during a future verification, use the value displayed by GitHub. See [GitHub's domain-verification documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
+
+### 3. Add the custom domain to the repository
+
+1. Open repository **Settings → Pages**.
+2. Under **Custom domain**, enter `yaayavar.com` and select **Save**.
+3. GitHub creates or updates the root `CNAME` file with `yaayavar.com` when publishing from a branch.
+4. If GitHub created that commit remotely, run `git pull --rebase origin main` before making the next local commit.
+
+GitHub recommends adding the custom domain in repository settings before pointing DNS to GitHub. See [GitHub's custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+
+### 4. Configure GoDaddy DNS
+
+Open GoDaddy **Domain Portfolio → yaayavar.com → DNS** and configure these records:
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -164,9 +204,41 @@ The active DNS configuration for the apex domain uses GitHub Pages' four IPv4 ad
 | A | `@` | `185.199.111.153` |
 | CNAME | `www` | `manojkmgit.github.io.` |
 
-The GitHub domain-verification TXT record should also remain in DNS. Email-related MX, SPF, DMARC, DKIM, and bounce records are independent of GitHub Pages and should not be removed unless the related email service is intentionally decommissioned.
+The trailing dot in `manojkmgit.github.io.` is valid. The `www` CNAME must point directly to `manojkmgit.github.io`, without the repository name and without pointing to `yaayavar.com`.
 
-Do not add a GoDaddy `WebsiteBuilder Site` record at `@`. It connects the domain to GoDaddy's Coming Soon/website service and conflicts with GitHub Pages. Once DNS is correct and GitHub provisions the certificate, **Enforce HTTPS** should remain enabled in the Pages settings.
+Remove any conflicting root-domain records or services, especially:
+
+- `A @ WebsiteBuilder Site`
+- GoDaddy domain forwarding on `yaayavar.com`
+- GoDaddy Airo, Coming Soon, parking, or Websites + Marketing connections
+- Other `A` records at `@`
+- Wildcard DNS records such as `*`
+
+The final public A-record lookup must return only the four `185.199.*.153` GitHub addresses. Do not delete the GoDaddy `ns07.domaincontrol.com` and `ns08.domaincontrol.com` nameserver records. Preserve the GitHub verification TXT record and any required email MX, SPF, DMARC, DKIM, and bounce records.
+
+### 5. Validate DNS and enable HTTPS
+
+On Windows, verify the public records with:
+
+```powershell
+Resolve-DnsName yaayavar.com -Type A
+Resolve-DnsName www.yaayavar.com -Type CNAME
+```
+
+Expected results:
+
+- `yaayavar.com` returns only the four GitHub Pages IPv4 addresses.
+- `www.yaayavar.com` is a CNAME for `manojkmgit.github.io`.
+- GitHub repository **Settings → Pages** reports **DNS check successful**.
+
+GitHub then provisions the TLS certificate. The **Enforce HTTPS** checkbox can remain unavailable while certificate provisioning is in progress; GitHub notes that it can take up to 24 hours. Once available, enable it and test both:
+
+```text
+https://yaayavar.com/
+https://www.yaayavar.com/
+```
+
+GitHub automatically redirects the configured `www` alternate to the primary apex domain. See [GitHub's HTTPS documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https).
 
 ## Updating a release
 
