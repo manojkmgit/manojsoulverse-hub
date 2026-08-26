@@ -707,7 +707,6 @@
         <section class="section" id="featured-section" hidden>
             <div class="section-heading">
                 <div>
-                    <span class="section-kicker">Start here</span>
                     <h2 class="section-title">Featured release</h2>
                 </div>
             </div>
@@ -844,7 +843,7 @@
                     '<div class="profile__image-wrap"><img class="profile__image" src="' + escapeHtml(profile.photo || "face_pen_final.png") + '" alt="' + escapeHtml(profile.name || "ManojYaayavar") + '"></div>' +
                     '<p class="profile__eyebrow">Poet · Lyricist · Songwriter</p>' +
                     '<h1 class="profile__name">' + escapeHtml(profile.name || "ManojYaayavar") + '</h1>' +
-                    '<p class="profile__bio">Original lyrics. Songs from the heart.<br>Stories of love, longing and life—brought to sound.</p>' +
+                    '<p class="profile__bio">' + escapeHtml(profile.bio || "Slow songs about love, life, and everything in between—written for the feelings we don’t always know how to say.") + '</p>' +
                     instagramHtml;
             }
 

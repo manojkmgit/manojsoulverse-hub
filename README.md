@@ -88,7 +88,7 @@ Preview playback is currently disabled:
 
 Change it to `true` to show preview controls for songs that have a valid `preview` field. The player supports play/pause, a progress indicator, and animated equalizer bars.
 
-The introductory profile wording shown on the page is currently defined in `index.html`; the profile identity, photo, and Instagram link come from `site-data.json`.
+The profile identity, photo, bio, and Instagram link all come from `site-data.json`.
 
 ## Run locally
 
