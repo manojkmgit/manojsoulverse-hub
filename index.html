@@ -585,12 +585,16 @@
 
             .song-store-link,
             .song-preview-button {
-                width: 34px;
-                min-width: 34px;
-                height: 34px;
+                width: 100%;
+                min-width: 0;
+                max-width: 34px;
+                height: auto;
+                flex: 1 1 0;
+                aspect-ratio: 1;
+                overflow: hidden;
                 padding: 0;
                 border-radius: 9px;
-                font-size: 0.95rem;
+                font-size: clamp(0.78rem, 4vw, 0.95rem);
             }
 
             .song-preview-button { border-radius: 50%; }
@@ -607,7 +611,7 @@
                 width: 100%;
                 max-width: 230px;
                 justify-items: center;
-                gap: 4px;
+                column-gap: clamp(4px, 2vw, 10px);
             }
         }
 
