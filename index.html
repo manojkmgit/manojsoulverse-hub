@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#180f17">
-    <meta name="description" content="Original lyrics and soulful songs by ManojSoulVerse. Listen on Spotify, Apple Music, YouTube Music and Amazon Music.">
-    <meta property="og:title" content="ManojSoulVerse | Poet & Lyricist">
-    <meta property="og:description" content="Original lyrics. Songs from the heart. Listen to ManojSoulVerse.">
+    <meta name="description" content="Original lyrics and soulful songs by Manoj Maurya 'Yaayavar'. Listen on Spotify, Apple Music, YouTube Music and Amazon Music.">
+    <meta property="og:title" content="ManojYaayavar | Poet & Lyricist">
+    <meta property="og:description" content="Original lyrics. Songs from the heart. Listen to ManojYaayavar.">
     <meta property="og:image" content="face_pen_final.png">
     <meta property="og:type" content="website">
-    <title>ManojSoulVerse | Original Lyrics & Songs</title>
+    <title>ManojYaayavar | Original Lyrics & Songs</title>
     <link rel="icon" type="image/png" href="face_pen_final.png">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -428,6 +431,16 @@
             gap: 7px;
         }
 
+        .previews-disabled .song-main {
+            grid-template-columns: 64px minmax(120px, 190px) minmax(190px, 1fr);
+        }
+
+        .previews-disabled .song-direct-links {
+            width: 100%;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
         .song-store-link {
             display: inline-grid;
             width: 40px;
@@ -440,6 +453,94 @@
             border-radius: 11px;
             background: rgba(255, 255, 255, 0.065);
             transition: 160ms ease;
+        }
+
+        .song-preview-button {
+            display: inline-flex;
+            width: auto;
+            min-width: 40px;
+            height: 40px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 0 13px;
+            color: #2a1720;
+            font-size: 0.76rem;
+            font-weight: 800;
+            border: 1px solid var(--accent-light);
+            border-radius: 11px;
+            outline: none;
+            background: var(--accent-light);
+            box-shadow: 0 6px 16px rgba(242, 162, 127, 0.18);
+            cursor: pointer;
+            transition: 160ms ease;
+        }
+
+        .song-preview-button:hover,
+        .song-preview-button:focus-visible {
+            background: #ffe3d2;
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        .song-preview-button.is-playing {
+            color: var(--ink);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(242, 162, 127, 0.28);
+        }
+
+        .preview-equalizer {
+            display: none;
+            width: 14px;
+            height: 14px;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .preview-equalizer b {
+            width: 2px;
+            height: 100%;
+            border-radius: 99px;
+            background: currentColor;
+            transform-origin: center;
+            animation: equalize 620ms ease-in-out infinite alternate;
+        }
+
+        .preview-equalizer b:nth-child(2) {
+            animation-duration: 430ms;
+            animation-delay: -180ms;
+        }
+
+        .preview-equalizer b:nth-child(3) {
+            animation-duration: 720ms;
+            animation-delay: -310ms;
+        }
+
+        .preview-equalizer b:nth-child(4) {
+            animation-duration: 510ms;
+            animation-delay: -90ms;
+        }
+
+        .song-preview-button.is-playing .preview-play-icon { display: none; }
+        .song-preview-button.is-playing .preview-equalizer { display: inline-flex; }
+
+        @keyframes equalize {
+            0% { transform: scaleY(0.25); opacity: 0.65; }
+            55% { transform: scaleY(0.72); opacity: 0.9; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+
+        .song-preview-track {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .song-preview-progress {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: width 100ms linear;
         }
 
         .song-store-link:hover,
@@ -479,11 +580,28 @@
                 gap: 5px;
             }
 
-            .song-store-link {
+            .song-store-link,
+            .song-preview-button {
                 width: 34px;
+                min-width: 34px;
                 height: 34px;
+                padding: 0;
                 border-radius: 9px;
                 font-size: 0.95rem;
+            }
+
+            .song-preview-button { border-radius: 50%; }
+            .song-preview-button span { display: none; }
+
+            .previews-disabled .song-main {
+                grid-template-columns: 56px minmax(0, 1fr);
+            }
+
+            .previews-disabled .song-direct-links {
+                grid-column: 2;
+                width: min(100%, 230px);
+                justify-content: space-between;
+                gap: 8px;
             }
         }
 
@@ -607,7 +725,7 @@
             <button class="load-more" id="load-more" type="button">Show more songs</button>
         </section>
 
-        <footer class="footer">Words by ManojSoulVerse · Songs from the heart</footer>
+        <footer class="footer">Words by Manoj 'Yaayavar' · Songs from the heart</footer>
     </main>
 
     <script>
@@ -618,6 +736,11 @@
             var visibleCount = PAGE_SIZE;
             var songs = [];
             var profileData = {};
+            var previewEnabled = false;
+            var previewPlayer = new Audio();
+            var activePreviewButton = null;
+            var activeProgressBar = null;
+            previewPlayer.preload = "none";
             var platformMeta = {
                 spotify: { label: "Spotify", icon: "fa-brands fa-spotify" },
                 apple: { label: "Apple Music", icon: "fa-brands fa-apple" },
@@ -666,16 +789,43 @@
                 }).join("");
             }
 
+            function previewButton(song, title) {
+                if (!previewEnabled || !validLink(song.preview)) return "";
+                return '<button class="song-preview-button" type="button" data-preview="' + escapeHtml(song.preview) + '" aria-label="Play preview of ' + escapeHtml(title.primary) + '" title="Play preview">' +
+                    '<i class="fa-solid fa-play preview-play-icon" aria-hidden="true"></i>' +
+                    '<span class="preview-equalizer" aria-hidden="true"><b></b><b></b><b></b><b></b></span>' +
+                    '<span class="preview-label">Preview</span></button>';
+            }
+
+            function setPreviewButtonState(button, isPlaying) {
+                if (!button) return;
+                var label = button.querySelector(".preview-label");
+                button.classList.toggle("is-playing", isPlaying);
+                button.setAttribute("aria-label", (isPlaying ? "Pause" : "Play") + " preview of " + button.closest(".song-card").querySelector(".song-title").textContent);
+                button.setAttribute("title", isPlaying ? "Pause preview" : "Play preview");
+                if (label) label.textContent = isPlaying ? "Pause" : "Preview";
+            }
+
+            function stopPreview(resetProgress) {
+                previewPlayer.pause();
+                setPreviewButtonState(activePreviewButton, false);
+                if (resetProgress && activeProgressBar) activeProgressBar.style.width = "0%";
+                if (resetProgress) previewPlayer.currentTime = 0;
+                activePreviewButton = null;
+                activeProgressBar = null;
+            }
+
             function renderProfile() {
                 var profile = profileData.profile || {};
                 var instagram = profile.socials && profile.socials.instagram;
+                var instagramHandle = profile.instagramHandle || String(profile.name || "ManojYaayavar").toLowerCase();
                 var instagramHtml = validLink(instagram)
-                    ? '<a class="instagram-link" href="' + escapeHtml(instagram) + '" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@manojsoulverse</a>'
+                    ? '<a class="instagram-link" href="' + escapeHtml(instagram) + '" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@' + escapeHtml(instagramHandle) + '</a>'
                     : "";
                 document.getElementById("profile").innerHTML =
-                    '<div class="profile__image-wrap"><img class="profile__image" src="' + escapeHtml(profile.photo || "face_pen_final.png") + '" alt="' + escapeHtml(profile.name || "ManojSoulVerse") + '"></div>' +
+                    '<div class="profile__image-wrap"><img class="profile__image" src="' + escapeHtml(profile.photo || "face_pen_final.png") + '" alt="' + escapeHtml(profile.name || "ManojYaayavar") + '"></div>' +
                     '<p class="profile__eyebrow">Poet · Lyricist · Songwriter</p>' +
-                    '<h1 class="profile__name">' + escapeHtml(profile.name || "ManojSoulVerse") + '</h1>' +
+                    '<h1 class="profile__name">' + escapeHtml(profile.name || "ManojYaayavar") + '</h1>' +
                     '<p class="profile__bio">Original lyrics. Songs from the heart.<br>Stories of love, longing and life—brought to sound.</p>' +
                     instagramHtml;
             }
@@ -725,8 +875,9 @@
                             '<span class="song-title">' + escapeHtml(title.primary) + '</span>' +
                             '<span class="song-subtitle">' + escapeHtml(title.secondary || "Listen now") + '</span>' +
                         '</span>' +
-                        '<div class="song-direct-links" aria-label="Listen to ' + escapeHtml(title.primary) + '">' + directSongLinks(song.links) + '</div>' +
+                        '<div class="song-direct-links" aria-label="Preview or listen to ' + escapeHtml(title.primary) + '">' + previewButton(song, title) + directSongLinks(song.links) + '</div>' +
                     '</div>' +
+                    (previewEnabled && validLink(song.preview) ? '<div class="song-preview-track" aria-hidden="true"><div class="song-preview-progress"></div></div>' : '') +
                 '</article>';
             }
 
@@ -739,6 +890,7 @@
             }
 
             function renderCatalogue() {
+                if (activePreviewButton) stopPreview(true);
                 var results = filteredSongs();
                 var displayed = results.slice(0, visibleCount);
                 document.getElementById("song-list").innerHTML = displayed.map(songCard).join("");
@@ -767,18 +919,66 @@
                 renderCatalogue();
             });
 
+            document.getElementById("song-list").addEventListener("click", function (event) {
+                var button = event.target.closest(".song-preview-button");
+                if (!button) return;
+
+                if (activePreviewButton === button && !previewPlayer.paused) {
+                    previewPlayer.pause();
+                    return;
+                }
+
+                if (activePreviewButton && activePreviewButton !== button) {
+                    stopPreview(true);
+                }
+
+                activePreviewButton = button;
+                activeProgressBar = button.closest(".song-card").querySelector(".song-preview-progress");
+
+                var requestedSource = new URL(button.dataset.preview, window.location.href).href;
+                if (previewPlayer.src !== requestedSource) {
+                    previewPlayer.src = requestedSource;
+                    previewPlayer.load();
+                }
+
+                previewPlayer.play().catch(function (error) {
+                    console.error("Preview playback failed:", error);
+                    stopPreview(false);
+                });
+            });
+
+            previewPlayer.addEventListener("play", function () {
+                setPreviewButtonState(activePreviewButton, true);
+            });
+
+            previewPlayer.addEventListener("pause", function () {
+                setPreviewButtonState(activePreviewButton, false);
+            });
+
+            previewPlayer.addEventListener("timeupdate", function () {
+                if (!activeProgressBar || !Number.isFinite(previewPlayer.duration) || previewPlayer.duration <= 0) return;
+                activeProgressBar.style.width = Math.min(100, (previewPlayer.currentTime / previewPlayer.duration) * 100) + "%";
+            });
+
+            previewPlayer.addEventListener("ended", function () {
+                stopPreview(true);
+            });
+
+            var contentVersion = Date.now();
             Promise.all([
-                fetch("data.json").then(function (response) {
-                    if (!response.ok) throw new Error("Could not load profile");
+                fetch("site-data.json?v=" + contentVersion, { cache: "no-store" }).then(function (response) {
+                    if (!response.ok) throw new Error("Could not load site data");
                     return response.json();
                 }),
-                fetch("songs.json").then(function (response) {
+                fetch("songs.json?v=" + contentVersion, { cache: "no-store" }).then(function (response) {
                     if (!response.ok) throw new Error("Could not load songs");
                     return response.json();
                 })
             ]).then(function (results) {
                 profileData = results[0] || {};
                 songs = Array.isArray(results[1].songs) ? results[1].songs : [];
+                previewEnabled = Boolean(profileData.features && profileData.features.previewEnabled);
+                document.getElementById("catalogue-section").classList.toggle("previews-disabled", !previewEnabled);
                 renderProfile();
                 renderFeatured();
                 renderArtistLinks();
