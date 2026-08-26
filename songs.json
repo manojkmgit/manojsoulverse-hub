@@ -1,0 +1,55 @@
+{
+  "songs": [
+    {
+      "title": "Besabab - बेसबब",
+      "albumArt": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d3ca96d2b76ea6b10970d729",
+      "featured": true,
+      "links": {
+        "youtube": "https://music.youtube.com/watch?v=Y765rm4YnsA&list=OLAK5uy_l_qQePrlr7e0ntL9dlw0qqAR4E4d5ZhA8",
+        "spotify": "https://open.spotify.com/album/7ylgOnW9hv3D9nmALxCmD5",
+        "apple": "https://music.apple.com/in/album/besabab-single/6782638104",
+        "amazon": "https://music.amazon.in/albums/B0H67GXGPW"
+      }
+    },
+    {
+      "title": "Arse Baad - अरसे बाद",
+      "albumArt": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0215de4e18a0aa5deb58a1b9c5",
+      "links": {
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kKa7_pRjt0KkXYQfZsFH8LnODuShj1DaY",
+        "spotify": "https://open.spotify.com/album/0IhaDhkOzFFKeQ3QKaKe7s",
+        "apple": "https://music.apple.com/in/album/arse-baad-single/6777437193",
+        "amazon": "https://music.amazon.co.uk/albums/B0H4B45PBG"
+      }
+    },
+    {
+      "title": "Jab Tu Humsafar Hai - जब तू हमसफ़र है",
+      "albumArt": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e029df634249825b931f139f14d",
+      "links": {
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_k88S3iPcv6jRfneYVHczr314i8xtiy27U",
+        "spotify": "https://open.spotify.com/album/6DscxqwINNQoX4nBRS91Iz",
+        "apple": "https://music.apple.com/in/album/jab-tu-humsafar-hai-single/6774068956",
+        "amazon": "https://music.amazon.co.uk/albums/B0H2G8ZBP6"
+      }
+    },
+    {
+      "title": "Kaaton Ki Tamanna - काँटों की है तमन्ना",
+      "albumArt": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0299b23242d5da47572a1374f1",
+      "links": {
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nmXWRDrh3lN-px6Lk-t3q3eApj4FFGfWY",
+        "spotify": "https://open.spotify.com/album/7GYPw6vvarOoz2xrSsvOBG",
+        "apple": "https://music.apple.com/in/album/kaaton-ki-tamanna-single/6766320583",
+        "amazon": "https://music.amazon.co.uk/albums/B0GZBZZ2GP"
+      }
+    },
+    {
+      "title": "Wahi Kissa - वही किस्सा",
+      "albumArt": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02c374e16c6de9c4da377d57e7",
+      "links": {
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_kADFyFlZQl6Gz-yoteL9cWtL_fDIRpPPQ",
+        "spotify": "https://open.spotify.com/track/5g5YDPe6ELSGKMaRXQdSVC",
+        "apple": "https://music.apple.com/us/album/wahi-kissa-single/1894441223?uo=4",
+        "amazon": "https://music.amazon.co.uk/albums/B0GXB3VTSP"
+      }
+    }
+  ]
+}
