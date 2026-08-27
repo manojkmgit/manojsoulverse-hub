@@ -32,6 +32,7 @@ The catalogue displays 10 songs initially and loads additional songs in groups o
 | `songs.json` | Active song catalogue. This is the main file to update when adding releases. |
 | `face_pen_final.png` | Local profile image, favicon, social preview image, and fallback artwork. |
 | `clip-whai-kissa.mp3` | Optional local preview audio for “Wahi Kissa.” |
+| `assets/icons/` | Reusable transparent PNG exports of the four Font Awesome platform glyphs. These are not loaded by the page. |
 | `CNAME` | GitHub Pages custom domain: `yaayavar.com`. |
 | `data.json` | Legacy data retained for reference. It is not loaded by the current page. |
 | `index.backup.html` | Local backup when present. It is intentionally not committed or deployed. |
